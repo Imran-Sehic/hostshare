@@ -1,0 +1,1 @@
+export const BRAND_GREEN = '#329a9a';
