@@ -1,15 +1,15 @@
+import { GoogleMapComponent } from 'components/google-maps';
+import { UIListing } from 'components/listing';
+import { UIModal } from 'components/modal';
+import { UILayout } from 'core/layout';
+import { readFileData } from 'db/utils';
+import { useBreakpoints } from 'hooks/breakpoints';
 import { GetServerSideProps, NextPage } from 'next';
 import { useState } from 'react';
 import { FaList, FaMap } from 'react-icons/fa';
-import { GoogleMapComponent } from '../../components/google-maps';
-import { UIListing } from '../../components/listing';
-import { UIModal } from '../../components/modal';
-import { UILayout } from '../../core/layout';
-import { readFileData } from '../../db/utils';
-import { useBreakpoints } from '../../hooks/breakpoints';
-import { BRAND_GREEN } from '../../utils/constants';
-import { formatListings } from '../../utils/format-listings';
-import { Listing } from '../../utils/interfaces';
+import { BRAND_GREEN } from 'utils/constants';
+import { formatListings } from 'utils/format-listings';
+import { Listing } from 'utils/interfaces';
 
 const ListingsPage: NextPage<{ listings: Listing[] }> = ({ listings }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

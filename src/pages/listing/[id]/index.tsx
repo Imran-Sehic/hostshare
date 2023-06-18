@@ -1,14 +1,14 @@
+import { UIHeader } from 'components/listing-components/ui-header';
+import { UILocationMap } from 'components/listing-components/ui-location-map';
+import { UIMainListingContent } from 'components/listing-components/ui-main-listing-content';
+import { UIStickyBottomBanner } from 'components/listing-components/ui-sticky-bottom-banner';
+import { UIStickyReservationWidget } from 'components/listing-components/ui-sticky-reservation';
+import { UILayout } from 'core/layout';
+import { readFileData } from 'db/utils';
+import { useBreakpoints } from 'hooks/breakpoints';
 import { GetServerSideProps, NextPage } from 'next';
-import { UIHeader } from '../../../components/listing-components/ui-header';
-import { UILocationMap } from '../../../components/listing-components/ui-location-map';
-import { UIMainListingContent } from '../../../components/listing-components/ui-main-listing-content';
-import { UIStickyBottomBanner } from '../../../components/listing-components/ui-sticky-bottom-banner';
-import { UIStickyReservationWidget } from '../../../components/listing-components/ui-sticky-reservation';
-import { UILayout } from '../../../core/layout';
-import { readFileData } from '../../../db/utils';
-import { useBreakpoints } from '../../../hooks/breakpoints';
-import { formatListings } from '../../../utils/format-listings';
-import { Listing } from '../../../utils/interfaces';
+import { formatListings } from 'utils/format-listings';
+import { Listing } from 'utils/interfaces';
 
 const ListingsPage: NextPage<{ listing: Listing }> = ({ listing }) => {
   const { isMobile } = useBreakpoints();

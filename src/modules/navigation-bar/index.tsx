@@ -1,3 +1,5 @@
+import { useSearchContext } from 'context-providers/search-provider';
+import { useBreakpoints } from 'hooks/breakpoints';
 import { Dispatch, SetStateAction, useState } from 'react';
 import {
   FaBars,
@@ -7,9 +9,7 @@ import {
   FaUser,
   FaUserCircle,
 } from 'react-icons/fa';
-import { useSearchContext } from '../../context-providers/search-provider';
-import { useBreakpoints } from '../../hooks/breakpoints';
-import { BRAND_GREEN } from '../../utils/constants';
+import { BRAND_GREEN } from 'utils/constants';
 
 export const UINavBar: React.FC = () => {
   const [isToastSet, setToast] = useState<boolean>(false);

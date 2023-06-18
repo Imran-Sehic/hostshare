@@ -1,4 +1,5 @@
-import { useBreakpoints } from '../../hooks/breakpoints';
+import { UIModal } from 'components/modal';
+import { useBreakpoints } from 'hooks/breakpoints';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import {
   FaAngleDoubleLeft,
@@ -10,8 +11,7 @@ import {
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ListingImage } from '../../utils/interfaces';
-import { UIModal } from '../modal';
+import { ListingImage } from 'utils/interfaces';
 
 export const UIGallery: React.FC<{ images: ListingImage[] }> = ({ images }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -27,32 +27,32 @@ export const UIGallery: React.FC<{ images: ListingImage[] }> = ({ images }) => {
             document.body.classList.add('preventBodyFromScrolling');
           }}
         >
-          <div className="flex-1">
+          <div className="flex-1 hover:opacity-[0.7] transition-opacity">
             <img
               src={images[0].url}
               className="w-[100%] h-[100%] object-cover"
             />
           </div>
           <div className="flex-1 grid grid-cols-2 grid-rows-2 gap-2">
-            <div>
+            <div className="hover:opacity-[0.7] transition-opacity">
               <img
                 src={images[1].url}
                 className="w-[100%] h-[100%] object-cover"
               />
             </div>
-            <div>
+            <div className="hover:opacity-[0.7] transition-opacity">
               <img
                 src={images[2].url}
                 className="w-[100%] h-[100%] object-cover"
               />
             </div>
-            <div>
+            <div className="hover:opacity-[0.7] transition-opacity">
               <img
                 src={images[3].url}
                 className="w-[100%] h-[100%] object-cover"
               />
             </div>
-            <div>
+            <div className="hover:opacity-[0.7] transition-opacity">
               <img
                 src={images[4].url}
                 className="w-[100%] h-[100%] object-cover"
@@ -67,10 +67,10 @@ export const UIGallery: React.FC<{ images: ListingImage[] }> = ({ images }) => {
       ) : (
         <>
           <div className="py-5">
-            <p className="flex items-center" onClick={() => history.back()}>
+            <a className="flex items-center" href="/">
               <FaAngleLeft size={24} />
               <span className="ml-2 text-[14px]">Houses</span>
-            </p>
+            </a>
           </div>
           <div
             className="w-[100vw] ml-[-25px] mb-3"

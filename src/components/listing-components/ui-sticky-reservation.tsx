@@ -1,6 +1,6 @@
+import { useSearchContext } from 'context-providers/search-provider';
 import { FaAngleDown, FaStar } from 'react-icons/fa';
-import { useSearchContext } from '../../context-providers/search-provider';
-import { Listing } from '../../utils/interfaces';
+import { Listing } from 'utils/interfaces';
 
 export const UIStickyReservationWidget: React.FC<{ listing: Listing }> = ({
   listing,
@@ -19,7 +19,7 @@ export const UIStickyReservationWidget: React.FC<{ listing: Listing }> = ({
       <div className="xs:w-[45%] lg:w-[35%]">
         <div className="p-5 border sticky top-[120px] mb-4 rounded-[10px]">
           <div className="flex justify-between mb-3">
-            <p>
+            <p className="line-clamp-1">
               <b className="text-[20px]">
                 {listing.pricePerNight}
                 {listing.currency.symbol}
@@ -30,7 +30,7 @@ export const UIStickyReservationWidget: React.FC<{ listing: Listing }> = ({
               <FaStar />
               <span>{listing.ratings.value}</span>
               &#x2022;
-              <span className="text-gray-500">
+              <span className="text-gray-500 line-clamp-1">
                 {listing.reviewCount} reviews
               </span>
             </p>

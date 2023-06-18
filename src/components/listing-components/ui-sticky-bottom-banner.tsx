@@ -1,5 +1,5 @@
-import { useSearchContext } from '../../context-providers/search-provider';
-import { ListingCurrency } from '../../utils/interfaces';
+import { useSearchContext } from 'context-providers/search-provider';
+import { ListingCurrency } from 'utils/interfaces';
 
 const months = [
   'January',

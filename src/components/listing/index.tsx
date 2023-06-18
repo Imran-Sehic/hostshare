@@ -5,7 +5,7 @@ import {
   FaCheckCircle,
   FaHeart,
 } from 'react-icons/fa';
-import { Listing } from '../../utils/interfaces';
+import { Listing } from 'utils/interfaces';
 
 export const UIListing: React.FC<Listing> = props => {
   return (

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaHouseUser, FaStar } from 'react-icons/fa';
-import { UIStarRating } from '../../ui-kit/star-rating';
-import { Listing } from '../../utils/interfaces';
+import { UIStarRating } from 'ui-kit/star-rating';
+import { Listing } from 'utils/interfaces';
 
 enum RatingsEnum {
   'accuracy' = 'Accuracy',

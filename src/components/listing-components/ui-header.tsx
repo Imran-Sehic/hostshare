@@ -1,6 +1,6 @@
+import { useBreakpoints } from 'hooks/breakpoints';
 import { FaMedal, FaStar } from 'react-icons/fa';
-import { useBreakpoints } from '../../hooks/breakpoints';
-import { Listing } from '../../utils/interfaces';
+import { Listing } from 'utils/interfaces';
 import { UIGallery } from './ui-gallery';
 
 export const UIHeader: React.FC<{ listing: Listing }> = ({ listing }) => {

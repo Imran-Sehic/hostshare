@@ -1,9 +1,9 @@
+import { UIListing } from 'components/listing';
+import { UILayout } from 'core/layout';
+import { readFileData } from 'db/utils';
 import { GetServerSideProps, NextPage } from 'next';
-import { UIListing } from '../components/listing';
-import { UILayout } from '../core/layout';
-import { formatListings } from '../utils/format-listings';
-import { Listing } from '../utils/interfaces';
-import { readFileData } from './api/listings';
+import { formatListings } from 'utils/format-listings';
+import { Listing } from 'utils/interfaces';
 
 const HomePage: NextPage<{ listings: Listing[] }> = ({ listings }) => {
   return (
