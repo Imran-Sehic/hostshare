@@ -5,13 +5,15 @@ import { GoogleMapComponent } from '../../components/google-maps';
 import { UIListing } from '../../components/listing';
 import { UIModal } from '../../components/modal';
 import { UILayout } from '../../core/layout';
+import { readFileData } from '../../db/utils';
+import { useBreakpoints } from '../../hooks/breakpoints';
 import { BRAND_GREEN } from '../../utils/constants';
 import { formatListings } from '../../utils/format-listings';
 import { Listing } from '../../utils/interfaces';
-import { readFileData } from '../api/listings';
 
 const ListingsPage: NextPage<{ listings: Listing[] }> = ({ listings }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { isMobile, isDesktop } = useBreakpoints();
 
   return (
     <UILayout
@@ -27,21 +29,27 @@ const ListingsPage: NextPage<{ listings: Listing[] }> = ({ listings }) => {
               <UIListing {...listing} />
             ))}
           </div>
-          <div className="hidden lg:block w-[30%] h-[100vh] fixed right-0">
-            <GoogleMapComponent listings={listings.slice(0, 5)} />
-          </div>
-          <button
-            className="hidden xs:block lg:hidden fixed top-[20%] right-0 bg-white p-2 rounded-[5px] border-2 border-green"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <FaMap size={36} color={BRAND_GREEN} />
-          </button>
-          <button
-            className="flex xs:hidden justify-center items-center fixed bottom-0 bg-green p-3 w-[100%] text-white text-xl z-[100]"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Map <FaMap className="ml-3" />
-          </button>
+          {isDesktop() && (
+            <div className="w-[30%] h-[100vh] fixed right-0">
+              <GoogleMapComponent listings={listings.slice(0, 5)} />
+            </div>
+          )}
+          {!isMobile() && !isDesktop() && (
+            <button
+              className="fixed top-[20%] right-0 bg-white p-2 rounded-[5px] border-2 border-green"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <FaMap size={36} color={BRAND_GREEN} />
+            </button>
+          )}
+          {isMobile() && (
+            <button
+              className="flex justify-center items-center fixed bottom-0 bg-green p-3 w-[100%] text-white text-xl z-[100]"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Map <FaMap className="ml-3" />
+            </button>
+          )}
           <UIModal isModalOpen={isModalOpen} isMobile>
             <div className="w-[100%] h-[100%]">
               <button

@@ -20,7 +20,7 @@ export const UIModal: React.FC<UIModalProps> = ({
       } bg-black fixed left-0 top-0 w-[100vw] h-[100vh] flex justify-center items-center`}
     >
       {!isMobile && (
-        <div className="flex justify-center items-center h-[100%] xs:h-[40%] lg:h-[70%] w-[100%] xs:w-[80%] lg:w-[70%] bg-white xs:rounded-[10px] relative overflow-scroll sm:overflow-hidden">
+        <div className="flex justify-center items-center h-[100%] xs:h-[40%] lg:h-[70%] w-[100%] xs:w-[80%] lg:w-[70%] bg-white xs:rounded-[10px] relative overflow-scroll xs:overflow-hidden">
           {children}
         </div>
       )}

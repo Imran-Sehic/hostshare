@@ -63,22 +63,21 @@ const ImageSlider: React.FC<{ images: string[]; imageId: string }> = ({
       </i>
       {index > 0 && (
         <button
-          className="opacity-0 group-hover:opacity-80 transition-all absolute top-[50%] translate-y-[-50%] left-2 p-2 bg-white rounded-[50%]"
+          className="opacity-80 md:opacity-0 group-hover:opacity-80 transition-all absolute top-[50%] translate-y-[-50%] left-2 p-2 bg-white rounded-[50%]"
           onClick={() => scrollImage('left')}
         >
           <FaAngleLeft size={12} />
         </button>
       )}
       <a href={`/listing/${imageId}`}>
-        <img
-          className="h-[100%] w-[100%] rounded-[10px]"
-          src={images[index]}
-          alt={'main image'}
-        />
+        <div
+          className="bg-cover bg-no-repeat bg-center h-[100%] w-[100%] rounded-[10px] transition-all"
+          style={{ backgroundImage: `url(${images[index]})` }}
+        ></div>
       </a>
       {index < images.length - 1 && (
         <button
-          className="opacity-0 group-hover:opacity-80 transition-all absolute top-[50%] translate-y-[-50%] right-2 p-2 bg-white rounded-[50%]"
+          className="opacity-80 md:opacity-0 group-hover:opacity-80 transition-all absolute top-[50%] translate-y-[-50%] right-2 p-2 bg-white rounded-[50%]"
           onClick={() => scrollImage('right')}
         >
           <FaAngleRight size={12} />

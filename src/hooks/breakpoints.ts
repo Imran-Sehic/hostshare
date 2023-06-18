@@ -15,8 +15,12 @@ export const useBreakpoints = () => {
     };
   }, []);
 
+  const isDesktop = () => {
+    return breakpoint >= 1024;
+  };
+
   const isTablet = () => {
-    return breakpoint > 450 && breakpoint < 768;
+    return breakpoint >= 450 && breakpoint < 768;
   };
 
   const isTabletDown = () => {
@@ -28,6 +32,7 @@ export const useBreakpoints = () => {
   };
 
   return {
+    isDesktop,
     isTablet,
     isTabletDown,
     isMobile,

@@ -2,17 +2,20 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
 
 export type SearchState = {
-  searchValue: string;
+  search: string;
   setSearchValueCall: (value: string) => void;
-  dateInValue: string;
+  dateIn: string;
   setDateInValueCall: (value: string) => void;
-  dateOutValue: string;
+  dateOut: string;
   setDateOutValueCall: (value: string) => void;
+  guests: string;
+  setGuestsValueCall: (value: string) => void;
 };
 
 const SearchStateContext = createContext({} as SearchState);
@@ -21,41 +24,68 @@ interface SearchProviderInterface {
   children: React.ReactNode;
 }
 
+enum LocalStorageFilterKeys {
+  SEARCH = 'search',
+  DATE_IN = 'dateIn',
+  DATE_OUT = 'dateOut',
+  GUESTS = 'guests',
+}
+
 export const SearchProvider: React.FC<SearchProviderInterface> = ({
   children,
 }) => {
-  const [searchValue, setSearchValue] = useState<string>('');
-  const [dateInValue, setDateInValue] = useState<string>('');
-  const [dateOutValue, setDateOutValue] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
+  const [dateIn, setDateIn] = useState<string>('');
+  const [dateOut, setDateOut] = useState<string>('');
+  const [guests, setGuests] = useState<string>('');
+
+  useEffect(() => {
+    setSearch(localStorage.getItem(LocalStorageFilterKeys.SEARCH) || '');
+    setDateIn(localStorage.getItem(LocalStorageFilterKeys.DATE_IN) || '');
+    setDateOut(localStorage.getItem(LocalStorageFilterKeys.DATE_OUT) || '');
+    setGuests(localStorage.getItem(LocalStorageFilterKeys.GUESTS) || '');
+  }, []);
 
   const setSearchValueCall = useCallback((value: string) => {
-    setSearchValue(value);
+    setSearch(value);
+    localStorage.setItem(LocalStorageFilterKeys.SEARCH, value);
   }, []);
 
   const setDateInValueCall = useCallback((value: string) => {
-    setDateInValue(value);
+    setDateIn(value);
+    localStorage.setItem(LocalStorageFilterKeys.DATE_IN, value);
   }, []);
 
   const setDateOutValueCall = useCallback((value: string) => {
-    setDateOutValue(value);
+    setDateOut(value);
+    localStorage.setItem(LocalStorageFilterKeys.DATE_OUT, value);
+  }, []);
+
+  const setGuestsValueCall = useCallback((value: string) => {
+    setGuests(value);
+    localStorage.setItem(LocalStorageFilterKeys.GUESTS, value);
   }, []);
 
   const searchState = useMemo(
     () => ({
-      searchValue,
+      search,
       setSearchValueCall,
-      dateInValue,
+      dateIn,
       setDateInValueCall,
-      dateOutValue,
+      dateOut,
       setDateOutValueCall,
+      guests,
+      setGuestsValueCall,
     }),
     [
-      searchValue,
-      setSearchValue,
-      dateInValue,
-      setDateInValue,
-      dateOutValue,
-      setDateOutValue,
+      search,
+      setSearch,
+      dateIn,
+      setDateIn,
+      dateOut,
+      setDateOut,
+      guests,
+      setGuests,
     ]
   );
 
