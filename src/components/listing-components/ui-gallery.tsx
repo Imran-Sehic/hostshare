@@ -165,7 +165,7 @@ const UIGalleryModal: React.FC<{
           </>
         ) : (
           <>
-            <div className="fixed bg-white p-4 w-[100%] top-0 font-bold justify-end border-b-2">
+            <div className="flex fixed bg-white p-4 w-[100%] top-0 font-bold justify-end border-b-2">
               <button
                 className="flex items-center font-bold text-[16px]"
                 onClick={() => {

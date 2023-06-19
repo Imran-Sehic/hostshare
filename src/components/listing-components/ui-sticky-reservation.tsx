@@ -39,19 +39,27 @@ export const UIStickyReservationWidget: React.FC<{ listing: Listing }> = ({
             <div className="grid grid-cols-2 border-b border-black">
               <div className="p-2 border-r border-black">
                 <p className="uppercase font-bold text-[8px]">Check-in</p>
-                <span className="line-clamp-[1]">{dateIn}</span>
+                <span className="line-clamp-[1]">
+                  {dateIn || 'Select date'}
+                </span>
               </div>
               <div className="p-2">
                 <p className="uppercase font-bold text-[8px]">Check-out</p>
-                <span className="line-clamp-[1]">{dateOut}</span>
+                <span className="line-clamp-[1]">
+                  {dateOut || 'Select date'}
+                </span>
               </div>
             </div>
             <div className="flex justify-between items-center p-2">
               <div>
                 <p className="uppercase font-bold text-[8px]">Guests</p>
-                <span>
-                  {guests} {guests === '1' ? 'guest' : 'guests'}
-                </span>
+                {guests ? (
+                  <span>
+                    {guests} {guests === '1' ? 'guest' : 'guests'}
+                  </span>
+                ) : (
+                  <span>Select guests number</span>
+                )}
               </div>
               <FaAngleDown size={16} />
             </div>
@@ -59,24 +67,29 @@ export const UIStickyReservationWidget: React.FC<{ listing: Listing }> = ({
           <button className="bg-green text-white rounded-[5px] w-[100%] py-2 mt-3 font-bold">
             Book
           </button>
-          <p className="flex justify-between mt-4 mb-4">
-            <span>
-              {listing.pricePerNight} {listing.currency.symbol} x{' '}
-              {getNumberOfDays()} nights
-            </span>
-            <span>
-              {listing.pricePerNight * getNumberOfDays()}{' '}
-              {listing.currency.symbol}
-            </span>
-          </p>
-          <hr />
-          <p className="flex justify-between mt-4 font-bold">
-            <span>Total</span>
-            <span>
-              {listing.pricePerNight * getNumberOfDays()}{' '}
-              {listing.currency.symbol}
-            </span>
-          </p>
+          {getNumberOfDays() > 0 && (
+            <>
+              <p className="flex justify-between mt-4 mb-4">
+                <span>
+                  {listing.pricePerNight} {listing.currency.symbol} x{' '}
+                  {getNumberOfDays()} nights
+                </span>
+                <span>
+                  {listing.pricePerNight * getNumberOfDays()}{' '}
+                  {listing.currency.symbol}
+                </span>
+              </p>
+
+              <hr />
+              <p className="flex justify-between mt-4 font-bold">
+                <span>Total</span>
+                <span>
+                  {listing.pricePerNight * getNumberOfDays()}{' '}
+                  {listing.currency.symbol}
+                </span>
+              </p>
+            </>
+          )}
         </div>
       </div>
     </>

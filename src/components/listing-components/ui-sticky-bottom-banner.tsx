@@ -27,7 +27,6 @@ export const UIStickyBottomBanner: React.FC<{
     const dayIn = new Date(dateIn).getUTCDate();
     const monthOut = new Date(dateOut).getMonth();
     const dayOut = new Date(dateOut).getUTCDate();
-    console.log({ monthIn, monthOut });
     return monthIn === monthOut
       ? `${dayIn} - ${dayOut} ${months[monthIn]?.substring(0, 3)}`
       : `${dayIn} ${months[monthOut]?.substring(
@@ -45,7 +44,7 @@ export const UIStickyBottomBanner: React.FC<{
           </b>{' '}
           night
         </p>
-        <p>{getFormattedPeriod()}</p>
+        {dateIn && dateOut && <p>{getFormattedPeriod()}</p>}
       </div>
       <button className="bg-green text-white font-bold py-2 px-5 rounded-[5px]">
         Book

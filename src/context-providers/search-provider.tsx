@@ -37,13 +37,13 @@ export const SearchProvider: React.FC<SearchProviderInterface> = ({
   const [search, setSearch] = useState<string>('');
   const [dateIn, setDateIn] = useState<string>('');
   const [dateOut, setDateOut] = useState<string>('');
-  const [guests, setGuests] = useState<string>('');
+  const [guests, setGuests] = useState<string>('1');
 
   useEffect(() => {
     setSearch(localStorage.getItem(LocalStorageFilterKeys.SEARCH) || '');
     setDateIn(localStorage.getItem(LocalStorageFilterKeys.DATE_IN) || '');
     setDateOut(localStorage.getItem(LocalStorageFilterKeys.DATE_OUT) || '');
-    setGuests(localStorage.getItem(LocalStorageFilterKeys.GUESTS) || '');
+    setGuests(localStorage.getItem(LocalStorageFilterKeys.GUESTS) || '1');
   }, []);
 
   const setSearchValueCall = useCallback((value: string) => {
